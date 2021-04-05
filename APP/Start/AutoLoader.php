@@ -5,10 +5,11 @@ spl_autoload_register('thisLoader');
 
 function thisLoader($controller)
 {
-    $context = new configStart\Context();
-    $path =  $context->dir();
-    $extension = "Controller.php";
-    $fullPath = $path . "\\". $controller . $extension;
+    $context = new Start\configStart();
+    $basePath =  $context->dir();
+    $extension = ".php";
+    $fullPath = $basePath . "\\". $controller . $extension;
+
 
     if (file_exists($fullPath)) {
         include_once $fullPath;
@@ -16,5 +17,4 @@ function thisLoader($controller)
         throw new \Exception ('Ruta ' . $fullPath . ' No encontrado' );
     }
 }
-
 

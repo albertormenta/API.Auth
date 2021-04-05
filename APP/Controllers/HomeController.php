@@ -1,5 +1,6 @@
 <?php
-include "Lib/JsonResponse.php";
+use Helpers\HomeHelper;
+use Lib\JsonResponse;
 
 class home
 {
@@ -10,19 +11,31 @@ class home
 
     static public function home()
     {
-        $result = new JsonResponse\Response(200, 'trabajando');
 
-        return $result;
     }
 
-    static public function testGET($params)
+    static public function testGET()
     {
         $code = 200;
-        $message = "La respuesta del test get";
-        $response = new JsonResponse\Response;
+        $response = new JsonResponse;
 
-        $result = $response->json_response($code, $message);
-        echo json_encode($result);
+        try {
+
+            $helper = new HomeHelper;
+            $users = $helper->getUsers();
+            $message = $users;
+            $result = $response->response($code, $message);
+
+            echo json_encode($result);
+
+        } catch (\Exception $th) {
+            $code = 400;
+            $message = $th->getMessage();
+            $result = $response->response($code, $message);
+
+            echo json_encode($result);
+        }
+        
 
     }
 }

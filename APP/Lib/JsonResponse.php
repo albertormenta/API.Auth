@@ -1,14 +1,10 @@
 <?php
-namespace JsonResponse;
+namespace Lib;
 
-class Response
+class JsonResponse
 {
-    public function __construct()
-    {
 
-    }
-
-    static public function json_response($code = 200, $message = null)
+    static public function response($code, $message)
     {
         header_remove();
         http_response_code($code);
