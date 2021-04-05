@@ -2,8 +2,9 @@
 namespace Helpers;
 
 use StoredProcedures\ApiAuthProcedure;
+use Models;
 
-class HomeHelper
+class UsersHelper
 {
     static public function getUsers()
     {
@@ -14,5 +15,11 @@ class HomeHelper
         return $users;
 
     }
+
+    static public function InsertUser(Models\UserModel $user)
+    {
+        $user->getNombreUsuario();
+    }
+
 
 }
