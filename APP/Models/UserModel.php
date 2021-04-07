@@ -19,6 +19,10 @@ class UserModel
      * @var string
      */
     private $Password;
+    /**
+     * @var int
+     */
+    private $idUser;
 
     public function setNombreUsuario(string $NombreUsuario)
     {
@@ -40,7 +44,7 @@ class UserModel
     {
         $this->Mail = $Mail;
     }
-    public function getMail(): string
+    public function getMail(): ?string
     {
         return $this->Mail;
     }
@@ -51,5 +55,13 @@ class UserModel
     public function getPassword(): string
     {
         return $this->Password;
+    }
+    public function setidUser(string $idUser)
+    {
+        $this->idUser = $idUser;
+    }
+    public function getidUser(): string
+    {
+        return $this->idUser;
     }
 }
